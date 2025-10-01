@@ -12,7 +12,7 @@ All relevant code related to programming is included.
 # Data:
 
 - Original zipped data is located here: N:\ext_Projekte\PROJECTNAME\30_Daten\
-- Data what is worked with is located here: '//int.wsr.at/Nabu/ohne_Backup/PROJECTNAME/WorkingData/
+- Data what is worked with is located here: '//int.wsr.at/Nabu/ohne_Backup/PROJECTNAME/
     - Note, format is parquet/arrow to speed up reading and writing the data.
 	
 # Files:
