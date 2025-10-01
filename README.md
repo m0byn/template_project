@@ -7,7 +7,7 @@ All relevant code related to programming is included.
 - [Quarto-Files](Quarto-Files): includes all .qmd files.
 - [Quarto-Files/Rendered](Rendered): includes all rendered .qmd files, standard is pdf, html, docx, commonmark.
 - [R-Scripts](R-Scripts): includes all .R files, usually Functions.R and qmd_rendering.R.
-- [Output](Output): includes all output ([Output/Plots](plots), [Output/Tables](tables)) specifically saved to the respective folders.
+- [Output](Output): includes all output, i.e. [Output/Plots](plots), [Output/Tables](tables), specifically saved to the respective folders.
 
 # Data:
 
