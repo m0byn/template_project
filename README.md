@@ -4,7 +4,7 @@ All relevant code related to programming is included.
 
 # Directory structure:
 
-- /Quarto-Files: includes all .qmd files.
+- [Quarto-Files](Quarto-Files): includes all .qmd files.
 - /Quarto-Files/Rendered: includes all rendered .qmd files, standard is pdf, html, docx, commonmark.
 - /R-Scripts: includes all .R files, usually Functions.R and qmd_rendering.R.
 - /Output: includes all output (plots, tables) specifically saved to the respective folders.
