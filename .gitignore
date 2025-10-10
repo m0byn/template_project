@@ -1,14 +1,8 @@
 Data/**
 
-# Exclude everything in Rendered subfolders except 'all' folders
-Quarto_files/Rendered/*/**
-!Quarto_files/Rendered/*/all/
-!Quarto_files/Rendered/*/all/**
-
-# Then exclude what you don't want in 'all'
-Quarto_files/Rendered/*/all/*.html
-Quarto_files/Rendered/*/all/*_files/libs/
-Quarto_files/Rendered/*/all/*_files/figure-html/
+# Exclude what you don't want in Rendered
+Quarto-Files/Rendered/*/*.html
+Quarto-Files/Rendered/*/*_files/
 
 # Cache folder
 Quarto_files/MergeData_cache/
