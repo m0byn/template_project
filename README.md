@@ -21,6 +21,6 @@ For a more detailed project and task description see [Project.md](Project.md).
 
 All relevant work is done using quarto.
 
-- [LoadData.qmd](Quarto-Files/LoadData.qmd): converts data from various formats to .arrow or .parquet for efficiency, this script is usually run only once at the beginning.
-- [DataPreparation.qmd](Quarto-Files/DataPreparation.qmd): the script does all data preparation before one can run the analysis.
-- [Analysis.qmd](Quarto-Files/Analysis.qmd): includes all code relevant for the analysis.
+- [LoadData](Quarto-Files/Rendered/LoadData/LoadData.md): converts data from various formats to .arrow or .parquet for efficiency, this script is usually run only once at the beginning.
+- [DataPreparation](Quarto-Files/Rendered/DataPreparation/DataPreparation.md): the script does all data preparation before one can run the analysis.
+- [Analysis](Quarto-Files/Rendered/Analysis/Analysis.md): includes all code relevant for the analysis.
