@@ -27,4 +27,11 @@ render = function(proj.name, qmd.name) {
 }
 
 
+# LoadData.qmd
+render('BL-Healthcare', 'LoadData')
+
+# DataPreparation.qmd
 render('BL-Healthcare', 'DataPreparation')
+
+# Analysis.qmd
+render('BL-Healthcare', 'Analysis')
