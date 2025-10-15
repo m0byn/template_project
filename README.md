@@ -23,4 +23,5 @@ All relevant work is done using quarto.
 
 - [LoadData](Quarto-Files/Rendered/LoadData/LoadData.md): converts data from various formats to .arrow or .parquet for efficiency, this script is usually run only once at the beginning.
 - [DataPreparation](Quarto-Files/Rendered/DataPreparation/DataPreparation.md): the script does all data preparation before one can run the analysis.
+- [Visualisation](Quarto-Files/Rendered/Visualisation/Visualisation.md): the script does the descriptive visualisation of the available data.
 - [Analysis](Quarto-Files/Rendered/Analysis/Analysis.md): includes all code relevant for the analysis.
