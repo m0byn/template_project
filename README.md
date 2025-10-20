@@ -7,7 +7,7 @@ For a more detailed project and task description see [Project.md](Project.md).
 # Directory structure
 
 - [Quarto-Files](Quarto-Files): includes all .qmd files.
-- [Rendered](Quarto-Files/Rendered): includes all rendered .qmd files, standard is pdf, html, docx, commonmark.
+- [Rendered](Quarto-Files/Rendered): includes all rendered .qmd files, standard is pdf, docx, and commonmark. Note, for some files only commommark is generated due to the long rendering time necessary. If, in any case the format .html is needed, it can be generated too.
 - [R-Scripts](R-Scripts): includes all .R files, usually Functions.R and qmd_rendering.R.
 - [Output](Output): includes all output, i.e. [plots](Output/Plots), [tables](Output/Tables), specifically saved to the respective folders.
 
