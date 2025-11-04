@@ -33,5 +33,11 @@ render('BL-Healthcare', 'LoadData')
 # DataPreparation.qmd
 render('BL-Healthcare', 'DataPreparation')
 
+# Visualisation.qmd
+render('BL-Healthcare', 'Visualisation')
+
 # Analysis.qmd
 render('BL-Healthcare', 'Analysis')
+
+# AI-Summary.qmd
+render('BL-Healthcare', 'AI-Summary')
