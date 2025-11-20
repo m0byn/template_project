@@ -397,7 +397,6 @@ detect_outliers = function(data = NA, # specify vector or column of dataframe
   }
 }
 
-
 ########################################################################################
 
 demean_FE = function(data, FE1, FE2 = NULL){
@@ -413,4 +412,15 @@ demean_FE = function(data, FE1, FE2 = NULL){
       ungroup()
   }
   return(data.demeaned)
+}
+
+########################################################################################
+
+get_data_structure = function(data) {
+  structure.info = data.frame(
+    column.name = names(data),
+    column.type = sapply(data, class),
+    row.names = NULL
+  )
+  return(structure.info)
 }
