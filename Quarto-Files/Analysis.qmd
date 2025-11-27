@@ -54,7 +54,7 @@ package_verification(packages = c('tidyverse',
                                   'fst',
                                   'dtplyr',
                                   'kableExtra',
-                                  'cem'), 
+                                  'MatchIt'), 
                      type = 'script')
 ```
 
