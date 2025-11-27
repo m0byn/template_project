@@ -52,7 +52,9 @@ package_verification(packages = c('tidyverse',
                                   'data.table',
                                   'parallel',
                                   'fst',
-                                  'dtplyr'), 
+                                  'dtplyr',
+                                  'kableExtra',
+                                  'cem'), 
                      type = 'script')
 ```
 
