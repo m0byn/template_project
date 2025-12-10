@@ -8,7 +8,7 @@
 
 # Rendering
 
-render = function(base.pathh, proj.name, qmd.name) {
+render = function(base.path, proj.name, qmd.name) {
   # Construct file paths
   qmd.path = file.path(base.path, proj.name, "Quarto-Files", paste0(qmd.name, ".qmd"))
   output.dir = file.path(base.path, proj.name, "Quarto-Files/Rendered", qmd.name)
