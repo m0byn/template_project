@@ -2,15 +2,15 @@
 title: "Visualisation"
 author: "Manuel Zerobin"
 format:
-    html:
-      toc: true
-      toc-location: right-body
-      code-fold: true
-      code-tools: true
-      number-sections: true
-      download: [pdf, docx]
-    pdf: default
-    docx: default
+    # html:
+    #   toc: true
+    #   toc-location: right-body
+    #   code-fold: true
+    #   code-tools: true
+    #   number-sections: true
+    #   download: [pdf, docx]
+    # pdf: default
+    # docx: default
     commonmark:
       code-link: true
       code-fold: hide
