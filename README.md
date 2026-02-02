@@ -6,20 +6,20 @@ For a more detailed project and task description see [Project.md](Project.md).
 
 # Directory structure
 
-- [Quarto-Files](Quarto-Files): includes all .qmd files.
-- [Rendered](Quarto-Files/Rendered): includes all rendered .qmd files, standard is pdf, docx, and commonmark. Note, for some files only commommark is generated due to the long rendering time necessary. If, in any case the format .html is needed, it can be generated too.
-- [R-Scripts](R-Scripts): includes all .R files, usually Functions.R and qmd_rendering.R.
+- [Quarto-Files](Quarto-Files): includes all **not** rendered `.qmd` files.
+- [Rendered](Quarto-Files/Rendered): includes all rendered `.qmd` files, standard is `commonmark`. If, in any case one of the formats `.docx`, `.pdf`, or `.html` is needed, it can be generated too.
+- [R-Scripts](R-Scripts): includes all `.R` files in separate folders corresponding to `Quarto-Files`. The folder `Shared` includes all `.R` files which other files need to access, e.g. loading packages and useful functions. 
 - [Input](Input): includes all input necessary to run the .qmd files.
 - [Output](Output): includes all output, i.e. [plots](Output/Plots), [tables](Output/Tables), specifically saved to the respective folders.
 - [Supplementary-Files](Supplementary-Files): includes all relevant documentation and other files.
 
 # Data
 
-- Original zipped data is located here: N:\ext_Projekte\PROJECTNAME\30_Daten\
-- Data what is worked with is located here: '//int.wsr.at/Nabu/ohne_Backup/PROJECTNAME/
-    - Note, format is parquet/arrow to speed up reading and writing the data.
+- Original zipped data is located here: `N:\ext_Projekte\PROJECTNAME\30_Daten\`
+- Data what is worked with is located here: `//int.wsr.at/Nabu/ohne_Backup/PROJECTNAME/`
+    - Note, format is `.parquet` or `.arrow` to speed up reading and writing the data.
 	
-# Files relevant to programming
+# Files:
 
 All relevant work is done using quarto.
 
