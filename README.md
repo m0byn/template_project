@@ -2,7 +2,9 @@
 
 All relevant code related to programming is included.
 
-For a more detailed project and task description see [Project.md](Project.md).
+- For a more detailed project and task description see [Project.md](Project.md).
+- Essential git commands are located in [Git.md](Supplementary-Files/Git.md).
+
 
 # Directory structure
 
