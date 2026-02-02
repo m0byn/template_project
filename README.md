@@ -9,7 +9,7 @@ All relevant code related to programming is included.
 # Directory structure
 
 - [Quarto-Files](Quarto-Files): includes all **not** rendered `.qmd` files.
-- [Rendered](Quarto-Files/Rendered): includes all rendered `.qmd` files, standard is `commonmark`. If, in any case one of the formats `.docx`, `.pdf`, or `.html` is needed, it can be generated too.
+- [Rendered](Quarto-Files/Rendered): includes all **rendered** `.qmd` files, standard is `commonmark`. If, in any case one of the formats `.docx`, `.pdf`, or `.html` is needed, it can be generated too.
 - [R-Scripts](R-Scripts): includes all `.R` files in separate folders corresponding to `Quarto-Files`. The folder `Shared` includes all `.R` files which other files need to access, e.g. loading packages and useful functions. 
 - [Input](Input): includes all input necessary to run the .qmd files.
 - [Output](Output): includes all output, i.e. [plots](Output/Plots), [tables](Output/Tables), specifically saved to the respective folders.
