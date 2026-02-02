@@ -1,4 +1,4 @@
-# Essential Git commands:
+# Essential Git commands
 
 - Change to directory:
     -  cd /N/ext_Projekte/Pflege_und_Gesundheit_PN-22106/40_Auswert/Code/OeNB-Jubelfonds-Pflege-Gesundheit/
@@ -6,3 +6,9 @@
 - git add "PathToFile" to add a file to the repository
 - git commit -m 'CommitMessage' to add a commit message 
 - git push to push everything to the repository
+
+## Merge conflicts
+
+If no files were changed simultaneously then:
+- git pull --rebase
+- git push
