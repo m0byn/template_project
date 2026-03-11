@@ -2,18 +2,18 @@
 
 All relevant code related to programming is included.
 
-- For a more detailed project and task description see [Project.md](Project.md).
-- Essential git commands are located in [Git.md](Supplementary-Files/Git.md).
+- For a more detailed project and task description see [project.md](project.md).
+- Essential git commands are found in [git-commands.md](git-commands.md).
 
 
 # Directory structure
 
-- [Quarto-Files](Quarto-Files): includes all **not** rendered `.qmd` files.
-- [Rendered](Quarto-Files/Rendered): includes all **rendered** `.qmd` files, standard is `commonmark`. If, in any case one of the formats `.docx`, `.pdf`, or `.html` is needed, it can be generated too.
-- [R-Scripts](R-Scripts): includes all `.R` files in separate folders corresponding to `Quarto-Files`. The folder [Shared](R-Scripts/Shared) includes all `.R` files which other files need to access, e.g. loading packages and useful functions. 
-- [Input](Input): includes all input necessary to run the .qmd files.
-- [Output](Output): includes all output, i.e. [plots](Output/Plots), [tables](Output/Tables), specifically saved to the respective folders.
-- [Supplementary-Files](Supplementary-Files): includes all relevant documentation and other files.
+- [quarto-files](quarto-files): includes all **not** rendered `.qmd` files.
+- [rendered-files](rendered-files): includes all **rendered** `.qmd` files, standard is `commonmark`. If, in any case one of the formats `.docx`, `.pdf`, or `.html` is needed, it can be generated too.
+- [r-scripts](r-scripts): includes all `.R` files usually shared with the `.qmd` files, e.g. loading packages and useful functions. 
+- [input](input): includes all input necessary to run the `.qmd` files.
+- [output](output): includes all output, i.e. [plots](output/plots), [tables](output/tables), specifically saved to the respective folders.
+- [supplementary-files](supplementary-files): includes all relevant documentation and other files.
 
 # Data
 
@@ -23,9 +23,9 @@ All relevant code related to programming is included.
 	
 # Files:
 
-All relevant work is done using quarto.
+All relevant work is done using quarto. The files are numbered.
 
-- [LoadData](Quarto-Files/Rendered/LoadData/LoadData.md): converts data from various formats to .arrow or .parquet for efficiency, this script is usually run only once at the beginning.
-- [DataPreparation](Quarto-Files/Rendered/DataPreparation/DataPreparation.md): the script does all data preparation before one can run the analysis.
-- [Visualisation](Quarto-Files/Rendered/Visualisation/Visualisation.md): the script does the descriptive visualisation of the available data.
-- [Analysis](Quarto-Files/Rendered/Analysis/Analysis.md): includes all code relevant for the analysis.
+- [01_load-data](rendered-files/01_load-data.md): converts data from various formats to `.parquet` for efficiency, this script is usually run only once at the beginning.
+- [02_data-preparation](rendered-files/02_data-preparation.md): the script does all data preparation before one can run the analysis.
+- [03_analysis](rendered-files/03_analysis.md): includes all code relevant for the analysis.
+- [04_visualisation](rendered-files/visualisation.md): the script does the descriptive visualisation of the available data.

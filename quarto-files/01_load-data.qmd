@@ -19,6 +19,7 @@ editor: source
 toc: true
 execute:
   cache: false 
+  eval: false
 ---
 
 # Project
@@ -39,9 +40,7 @@ execute:
 
 ## Path to data
 
--   Write location '//int.wsr.at/Nabu/ohne_Backup/mzerobin/PROJECTNAME/BaseData/XXX.arrow' or
--   Write location '//int.wsr.at/Nabu/ohne_Backup/mzerobin/PROJECTNAME/BaseData/XXX.parquet' or
--   Write location '//int.wsr.at/Nabu/ohne_Backup/mzerobin/PROJECTNAME/BaseData/XXX.fst'
+-   Write location '//int.wsr.at/Nabu/ohne_Backup/mzerobin/PROJECTNAME/BaseData/XXX.parquet'
 
 # Load relevant functions and packages
 
