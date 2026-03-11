@@ -14,12 +14,6 @@ All relevant code related to programming is included.
 - [input](input): includes all input necessary to run the `.qmd` files.
 - [output](output): includes all output, i.e. [plots](output/plots), [tables](output/tables), specifically saved to the respective folders.
 - [supplementary-files](supplementary-files): includes all relevant documentation and other files.
-
-# Data
-
-- Original zipped data is located here: `N:\ext_Projekte\PROJECTNAME\30_Daten\`
-- Data what is worked with is located here: `//int.wsr.at/Nabu/ohne_Backup/PROJECTNAME/`
-    - Note, format is `.parquet` or `.arrow` to speed up reading and writing the data.
 	
 # Files:
 
@@ -29,3 +23,9 @@ All relevant work is done using quarto. The files are numbered.
 - [02_data-preparation](rendered-files/02_data-preparation.md): the script does all data preparation before one can run the analysis.
 - [03_analysis](rendered-files/03_analysis.md): includes all code relevant for the analysis.
 - [04_visualisation](rendered-files/visualisation.md): the script does the descriptive visualisation of the available data.
+
+# Data
+
+- Original zipped data is located here: `N:\ext_Projekte\PROJECTNAME\30_Daten\`
+- Data what is worked with is located here: `//int.wsr.at/Nabu/ohne_Backup/PROJECTNAME/`
+- Note, format is `.parquet` to speed up reading and writing the data.
