@@ -17,12 +17,32 @@ All relevant code related to programming is included.
 	
 # Files:
 
-All relevant work is done using quarto. The files are numbered.
+All relevant work is done using quarto. The files are numbered and assigned to specific ranges depending on the task.
 
+**00-09:** basic data preparation relevant for all subsequent operations
+
+- [00_data-prep](rendered-files/00_data-prep.md): prepares several tables and basic data to be used subsequently.
 - [01_load-data](rendered-files/01_load-data.md): converts data from various formats to `.parquet` for efficiency, this script is usually run only once at the beginning.
-- [02_data-preparation](rendered-files/02_data-preparation.md): the script does all data preparation before one can run the analysis.
-- [03_analysis](rendered-files/03_analysis.md): includes all code relevant for the analysis.
-- [04_visualisation](rendered-files/visualisation.md): the script does the descriptive visualisation of the available data.
+
+**10-19:** topic specific data preparation
+
+- [10_data-preparation](rendered-files/10_data-preparation.md): the script does all data preparation before one can run the analysis.
+
+**20-29:** analysis of X
+
+- [20_analysis](rendered-files/20_analysis.md): includes all code relevant for the analysis.
+
+**30-39:** analysis of Y
+
+- [30_analysis](rendered-files/30_analysis.md): prepares several tables and basic data to be used subsequently.
+
+**40-49:** analysis of Z
+
+- [40_analysis](rendered-files/40_analysis.md): prepares several tables and basic data to be used subsequently.
+
+**50-59:** visualisation of bla
+
+- [50_visualisation](rendered-files/50_visualisation.md): the script does the descriptive visualisation of the available data.
 
 # Data
 
