@@ -19,26 +19,26 @@ library(kableExtra)
 
 #  --------------------------------------- Set paths
 
-no.backup = '//int.wsr.at/Nabu/ohne_Backup/mzerobin/OeNB-Jubelfonds-Pflege-Gesundheit'
+no.backup = getWifoFolder("tmp", "mzerobin/OeNB-Jubelfonds-Pflege-Gesundheit/Paper-3-CN")
 
 path = list(
+  proj = file.path(getWifoFolder('personal', '/Projects')),
   data = list(
-    zips = file.path(no.backup, 'PFIF-WIFO'),
-    base = file.path(no.backup, 'WorkingData/BaseData'),
-    aux.1.load.data = file.path(no.backup, 'WorkingData/Auxiliary/01_load-data'),
-    aux.2.merge.data = file.path(no.backup, 'WorkingData/Auxiliary/02_merge-data'),
-    aux.3.merge.data = file.path(no.backup, 'WorkingData/Auxiliary/03_merge-data'),
-    aux.4.merge.data = file.path(no.backup, 'WorkingData/Auxiliary/04_merge-data'),
-    aux.11 = file.path(no.backup, 'WorkingData/Auxiliary/11_prep-intervals'),
-    aux.12 = file.path(no.backup, 'WorkingData/Auxiliary/12_level2-treatment'),
-    aux.13 = file.path(no.backup, 'WorkingData/Auxiliary/13_level2-control'),
-    aux.14 = file.path(no.backup, 'WorkingData/Auxiliary/14_level1-treatment'),
-    aux.15 = file.path(no.backup, 'WorkingData/Auxiliary/15_level1-control'),
-    pug = file.path(no.backup, 'WorkingData/Pflege-Gesundheit')
+    local = file.path('/home/mzerobin/workspace/Paper-3-CN/data'),
+    base = file.path(no.backup, 'data'),
+    renner = file.path(getWifoFolder('personal', '/Projects/ICD-10/output/data')),
+    aux00 = file.path(no.backup, 'auxiliary/00'),
+    aux01 = file.path(no.backup, 'auxiliary/01'),
+    aux10 = file.path(no.backup, 'auxiliary/10'),
+    aux11 = file.path(no.backup, 'auxiliary/11'),
+    aux12 = file.path(no.backup, 'auxiliary/12'),
+    aux13 = file.path(no.backup, 'auxiliary/13'),
+    aux14 = file.path(no.backup, 'auxiliary/14'),
+    aux15 = file.path(no.backup, 'auxiliary/15')
   ),
   output = list(
-    plots = here('Plots'),
-    tables = here('Tables')
+    plots = here('plots'),
+    tables = here('tables')
   )
 )
 
