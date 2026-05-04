@@ -19,14 +19,13 @@ library(kableExtra)
 
 #  --------------------------------------- Set paths
 
-no.backup = getWifoFolder("tmp", "mzerobin/OeNB-Jubelfonds-Pflege-Gesundheit/Paper-3-CN")
+no.backup = wifo.base::getWifoFolder("tmp", "mzerobin/OeNB-Jubelfonds-Pflege-Gesundheit/Paper-3-CN")
 
 path = list(
-  proj = file.path(getWifoFolder('personal', '/Projects')),
+  proj = file.path(wifo.base::getWifoFolder('personal', '/Projects')),
   data = list(
     local = file.path('/home/mzerobin/workspace/Paper-3-CN/data'),
     base = file.path(no.backup, 'data'),
-    renner = file.path(getWifoFolder('personal', '/Projects/ICD-10/output/data')),
     aux00 = file.path(no.backup, 'auxiliary/00'),
     aux01 = file.path(no.backup, 'auxiliary/01'),
     aux10 = file.path(no.backup, 'auxiliary/10'),
