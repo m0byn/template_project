@@ -5,7 +5,7 @@
 ## YAML Header
 
 - Title matches file name (e.g., `04_merge-data`)
-- Author field included with default author: Manuel Zerobin
+- Author field included
 - Default format: `commonmark` with `code-link`, `code-fold: hide`, `code-copy`
 - Global execute options: `cache: false`, `eval: false`, `message: false`
 - `toc: true`
