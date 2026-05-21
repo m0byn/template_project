@@ -65,6 +65,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - computationally easy tasks: use tidyverse
 - computationally heavy tasks: use data.table
 - format: code and documentation output must ALWAYS be provided for quarto documents to copy and paste it, i.e. code provided in chunks and documentation in markdown.
+- never number section headers as this breaks hyperlinks in rendered quarto files! 
 
 ## 6. Environment
 
