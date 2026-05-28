@@ -17,27 +17,26 @@ library(tidyverse)
 library(arrow)
 library(kableExtra)
 
+#  --------------------------------------- Environment flags
+
+# TRUE on dc-mzerobin (NASH server): write intermediary files to fast local disk
+# FALSE elsewhere: write intermediary files to network drive (path$data$base)
+nash = grepl("dc-mzerobin", Sys.info()[["nodename"]])
+
 #  --------------------------------------- Set paths
 
-no.backup = wifo.base::getWifoFolder("tmp", "mzerobin/OeNB-Jubelfonds-Pflege-Gesundheit/Paper-3-CN")
+no.backup = wifo.base::getWifoFolder("tmp", "mzerobin/OeNB-Jubelfonds-Pflege-Gesundheit/Paper-JMP-Evals")
 
 path = list(
   proj = file.path(wifo.base::getWifoFolder('personal', '/Projects')),
   data = list(
     local = file.path('/home/mzerobin/workspace/Paper-3-CN/data'),
     base = file.path(no.backup, 'data'),
-    aux00 = file.path(no.backup, 'auxiliary/00'),
-    aux01 = file.path(no.backup, 'auxiliary/01'),
-    aux10 = file.path(no.backup, 'auxiliary/10'),
-    aux11 = file.path(no.backup, 'auxiliary/11'),
-    aux12 = file.path(no.backup, 'auxiliary/12'),
-    aux13 = file.path(no.backup, 'auxiliary/13'),
-    aux14 = file.path(no.backup, 'auxiliary/14'),
-    aux15 = file.path(no.backup, 'auxiliary/15')
+    aux00 = file.path(no.backup, 'auxiliary/00')
   ),
   output = list(
-    plots = here('plots'),
-    tables = here('tables')
+    plots = here('output/plots'),
+    tables = here('output/tables')
   )
 )
 
