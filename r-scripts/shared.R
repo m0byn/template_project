@@ -37,7 +37,8 @@ path = list(
   output = list(
     plots = here('output/plots'),
     tables = here('output/tables')
-  )
+  ),
+  input = here('input')
 )
 
 rm(no.backup)
