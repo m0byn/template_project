@@ -17,6 +17,9 @@ library(tidyverse)
 library(arrow)
 library(kableExtra)
 library(data.table)
+library(tinytable)
+if (interactive()) options(tinytable_print_output = 'markdown')
+
 
 # --------------------------------------- Environment flags
 
@@ -145,4 +148,49 @@ equal_df = function(dt1, dt2) {
 
 RoundDT = function(dt, digits) {
   dt[, (names(dt)) := lapply(.SD, function(x) if (is.numeric(x)) round(x, digits) else x)]
+}
+
+#  ---------------------------------------
+
+save_figure = function(plot, file, caption, notes = NULL, label = NULL,
+                       tex.dir = file.path(dirname(file), 'tex'),
+                       width = 9, height = 5, dpi = 300) {
+  stem = tools::file_path_sans_ext(basename(file))
+  if (is.null(label)) label = paste0('fig:', gsub('_', '-', stem))
+
+  ggsave(file, plot, width = width, height = height, dpi = dpi)
+
+  note.tex = if (is.null(notes)) '' else
+    sprintf('    \\vspace{0.5ex}\n    {\\footnotesize \\textit{Notes:} %s}\n', notes)
+
+  tex = sprintf(
+'\\begin{figure}[H]
+    \\centering
+    \\includegraphics[width=\\textwidth,keepaspectratio]{%s}
+    \\caption{%s}
+    \\label{%s}
+%s\\end{figure}\n',
+    basename(file), caption, label, note.tex)
+
+  dir.create(tex.dir, showWarnings = FALSE, recursive = TRUE)
+  writeLines(tex, file.path(tex.dir, paste0(stem, '.tex')))
+  invisible(file)
+}
+
+#  ---------------------------------------
+
+save_table = function(x, file = NULL, caption, notes = NULL, label = NULL,
+                      align = NULL, col.names = NULL, ...) {
+  if (is.null(label) && !is.null(file))
+    label = paste0('tab:', gsub('_', '-', tools::file_path_sans_ext(basename(file))))
+  if (!is.null(col.names)) names(x) = col.names
+
+  cap = if (is.null(label)) caption else paste0(caption, '\\label{', label, '}')
+  t   = tt(x, caption = cap, notes = notes, ...)
+  if (!is.null(align)) t = style_tt(t, j = seq_len(ncol(x)), align = align)
+
+  if (is.null(file)) return(t)
+  dir.create(dirname(file), showWarnings = FALSE, recursive = TRUE)
+  save_tt(t, output = file, overwrite = TRUE)
+  invisible(file)
 }
