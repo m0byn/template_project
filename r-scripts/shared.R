@@ -10,7 +10,7 @@
 
 set.seed(123456789)
 
-#  --------------------------------------- Load packages
+# --------------------------------------- Load packages
 
 library(here)
 library(tidyverse)
@@ -21,9 +21,9 @@ library(data.table)
 # --------------------------------------- Environment flags
 
 known.hosts = c(
-  "dc-mzerobin",                              # NASH server
-  "LTN-184",                      # local machine
-  "FRIEDMAN", "AUMANN", "KAHNEMAN", "DUFLO"  # remote desktops
+  "dc-mzerobin",                             # NASH server
+  "LTN-184",                                 # local machine
+  "FRIEDMAN", "AUMANN", "KAHNEMAN", "DUFLO" # remote desktops
 )
 
 if (!any(grepl(paste(known.hosts, collapse = "|"), Sys.info()[["nodename"]]))) {
@@ -32,23 +32,22 @@ if (!any(grepl(paste(known.hosts, collapse = "|"), Sys.info()[["nodename"]]))) {
 
 # --------------------------------------- Set paths
 
+aux.folders = c("00", "10", "11", "12", "30", "31", "32", "33")
+
 path = list(
-  data = list(
-    base      = here("data"),
-    raw       = here("data/raw"),
-    processed = here("data/processed"),
-    aux00     = here("data/auxiliary/00"),
-    aux10     = here("data/auxiliary/10"),
-    aux11     = here("data/auxiliary/11"),
-    aux12     = here("data/auxiliary/12"),
-    aux30     = here("data/auxiliary/30"),
-    aux31     = here("data/auxiliary/31"),
-    aux32     = here("data/auxiliary/32"),
-    aux33     = here("data/auxiliary/33")
+  data = c(
+    list(
+      raw       = here("data/raw"),
+      processed = here("data/processed")
+    ),
+    setNames(
+      lapply(aux.folders, \(x) here("data/auxiliary", x)),
+      paste0("aux", aux.folders)
+    )
   ),
   output = list(
-    plots  = here("output/plots"),
-    tables = here("output/tables")
+    plots  = here("code/output/plots"),
+    tables = here("code/output/tables")
   )
 )
 
