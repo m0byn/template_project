@@ -35,7 +35,7 @@ All relevant work is done using Quarto. Files are numbered and assigned to speci
 ## Structure
 
 ```
-.
+project
 ├── input/                  Input data and resources
 ├── output/                 Generated outputs
 │   ├── figures/            Figures
@@ -56,8 +56,8 @@ All relevant work is done using Quarto. Files are numbered and assigned to speci
 
 ## Data
 
-- Original zipped data is located here: `N:\ext_Projekte\PROJECTNAME\30_Daten\`
-- Data that is worked with is located here: `//int.wsr.at/Nabu/ohne_Backup/PROJECTNAME/`
+- Original zipped data is located in the respective `NABU` folder.
+- Data that is worked with is usually located on `nash`.
 - Note: the format is `.parquet` to speed up reading and writing the data.
 
 ## Notes
