@@ -16,32 +16,41 @@ library(here)
 library(tidyverse)
 library(arrow)
 library(kableExtra)
+library(data.table)
 
-#  --------------------------------------- Environment flags
+# --------------------------------------- Environment flags
 
-# TRUE on dc-mzerobin (NASH server): write intermediary files to fast local disk
-# FALSE elsewhere: write intermediary files to network drive (path$data$base)
-nash = grepl("dc-mzerobin", Sys.info()[["nodename"]])
-
-#  --------------------------------------- Set paths
-
-no.backup = wifo.base::getWifoFolder("tmp", "mzerobin/OeNB-Jubelfonds-Pflege-Gesundheit/Paper-JMP-Evals")
-
-path = list(
-  proj = file.path(wifo.base::getWifoFolder('personal', '/Projects')),
-  data = list(
-    local = file.path('/home/mzerobin/workspace/Paper-3-CN/data'),
-    base = file.path(no.backup, 'data'),
-    aux00 = file.path(no.backup, 'auxiliary/00')
-  ),
-  output = list(
-    plots = here('output/plots'),
-    tables = here('output/tables')
-  ),
-  input = here('input')
+known.hosts = c(
+  "dc-mzerobin",                              # NASH server
+  "LTN-184",                      # local machine
+  "FRIEDMAN", "AUMANN", "KAHNEMAN", "DUFLO"  # remote desktops
 )
 
-rm(no.backup)
+if (!any(grepl(paste(known.hosts, collapse = "|"), Sys.info()[["nodename"]]))) {
+  stop(paste0("Unknown host: '", Sys.info()[["nodename"]], "'. Add it to the setup file."))
+}
+
+# --------------------------------------- Set paths
+
+path = list(
+  data = list(
+    base      = here("data"),
+    raw       = here("data/raw"),
+    processed = here("data/processed"),
+    aux00     = here("data/auxiliary/00"),
+    aux10     = here("data/auxiliary/10"),
+    aux11     = here("data/auxiliary/11"),
+    aux12     = here("data/auxiliary/12"),
+    aux30     = here("data/auxiliary/30"),
+    aux31     = here("data/auxiliary/31"),
+    aux32     = here("data/auxiliary/32"),
+    aux33     = here("data/auxiliary/33")
+  ),
+  output = list(
+    plots  = here("output/plots"),
+    tables = here("output/tables")
+  )
+)
 
 #  --------------------------------------- Functions
 
