@@ -54,6 +54,8 @@ path = list(
   )
 )
 
+rm(known.hosts, aux.folders)
+
 #  --------------------------------------- Functions
 
 get_ind = function(id, 
