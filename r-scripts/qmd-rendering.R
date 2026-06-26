@@ -9,11 +9,17 @@
 # Rendering
 
 render = function(qmd.name) {
+  # Locate the project root (the folder above `code`) by finding the directory
+  # that contains code/r-scripts/shared.R. Works whether you open the project
+  # folder or the code folder, and ignores stray .git markers.
+  proj.root = rprojroot::find_root(rprojroot::has_file("code/r-scripts/shared.R"))
+  base.dir  = file.path(proj.root, "code")
+
   # Construct file paths
-  qmd.path       = here::here("quarto-files", paste0(qmd.name, ".qmd"))
-  output.dir     = here::here("rendered-files")
-  files.dir      = here::here("quarto-files", paste0(qmd.name, "_files"))
-  gitignore.path = here::here("quarto-files", ".gitignore")
+  qmd.path       = file.path(base.dir, "quarto-files", paste0(qmd.name, ".qmd"))
+  output.dir     = file.path(base.dir, "rendered-files")
+  files.dir      = file.path(base.dir, "quarto-files", paste0(qmd.name, "_files"))
+  gitignore.path = file.path(base.dir, "quarto-files", ".gitignore")
 
   # Validate qmd file exists
   if (!file.exists(qmd.path)) {
