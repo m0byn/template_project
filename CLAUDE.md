@@ -56,19 +56,19 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
-## 5. Specific coding instructions
+## 5. Specific Coding Instructions
 
 - variable names: use a dot as separators of words instead of underscores
 - function names: use underscores as separators of words
 - variable assignment: use "=" instead of "<-"
-- only write functions if the the function is called multiple times
+- only write functions if the function is called multiple times
 - computationally easy tasks: use tidyverse
 - computationally heavy tasks: use data.table
 - format: code and documentation output must ALWAYS be provided for quarto documents to copy and paste it, i.e. code provided in chunks and documentation in markdown.
-- never number section headers as this breaks hyperlinks in rendered quarto files! 
 - tables shall NEVER be hardcoded
 - always use save_tables() and save_figures()
-- number the sections as: Step 1 - bla bla
+- section headers: embed the step number in the header text — major steps as `Step N - Title`, sub-steps as `Step N-M - Title` (e.g. `Step 1 - Merge spells`, `Step 1-1 - Resolve duplicates`)
+- never enable Quarto's automatic section numbering — it breaks anchor links in the rendered file
 
 ## 6. Environment
 
