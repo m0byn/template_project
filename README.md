@@ -1,66 +1,71 @@
-# project-name
+# [Paper / Project Number] – [Short Descriptive Title]
 
-- For a more detailed project and task description see [project.md](project.md).
-- Essential git commands are found in [git-commands.md](git-commands.md).
+- For a detailed project and task description see [project.md](project.md).
+- Essential git commands are summarized in [git-commands.md](git-commands.md).
 
 ## Files
 
-All relevant work is done using Quarto. Files are numbered and assigned to specific ranges depending on the task. New files are created from the template at [`quarto-files/quarto-coding-file-template.md`](quarto-files/quarto-coding-file-template.md); rendered outputs are written to [`rendered-files/`](rendered-files).
+All empirical work is done using Quarto. Source files are numbered and assigned to specific ranges by task. New files are created from the template at [`quarto-files/quarto-coding-file-template.md`](quarto-files/quarto-coding-file-template.md); rendered outputs are written to [`rendered-files/`](rendered-files).
 
-**00-09:** basic data preparation relevant for all subsequent operations
+**00–09:** core data preparation relevant for all subsequent tasks
 
-- `00_data-prep`: prepares several tables and basic data to be used subsequently.
-- `01_load-data`: converts data from various formats to `.parquet` for efficiency; this script is usually run only once at the beginning.
+- `[00_...](rendered-files/00_....md)`: [brief description of content]
+- `[01_...](rendered-files/01_....md)`: [brief description of content]
 
-**10-19:** topic-specific data preparation
+**10–19:** [dataset or module A]‑specific preparation
 
-- `10_data-preparation`: does all data preparation before running the analysis.
+- `[10_...](rendered-files/10_....md)`: [description]
+- `[11_...](rendered-files/11_....md)`: [description]
 
-**20-29:** analysis of X
+**20–29:** [dataset or module B]‑specific preparation
 
-- `20_analysis`: includes all code relevant for the analysis.
+- `[20_...](rendered-files/20_....md)`: [description]
+- `[21_...](rendered-files/21_....md)`: [description]
 
-**30-39:** analysis of Y
+**30–39:** construction of analysis datasets
 
-- `30_analysis`: includes all code relevant for the analysis.
+- `[30_...](rendered-files/30_....md)`: [description]
+- `[31_...](rendered-files/31_....md)`: [description]
 
-**40-49:** analysis of Z
+**40–49:** main estimation and robustness checks
 
-- `40_analysis`: includes all code relevant for the analysis.
+- `[40_...](rendered-files/40_....md)`: [main baseline specification]
+- `[41_...](rendered-files/41_....md)`: [event‑study / heterogeneity]
+- `[42_...](rendered-files/42_....md)`: [robustness / alternative samples]
 
-**50-59:** visualisation
+**50–59:** tables, figures, and reporting
 
-- `50_visualisation`: descriptive visualisation of the available data.
+- `[50_...](rendered-files/50_....md)`: [tables for main text]
+- `[51_...](rendered-files/51_....md)`: [figures for main text]
+- `[52_...](rendered-files/52_....md)`: [appendix outputs]
+
+(Extend ranges as required; keep numbering monotone in the typical pipeline order: preparation → construction → estimation → reporting.)
 
 ## Structure
 
-```
+```text
 project
-├── input/                  Input data and resources
+├── input/                  Input data and external resources
 ├── output/                 Generated outputs
-│   ├── figures/            Figures
-│   └── tables/             Tables
+│   ├── figures/            Final and intermediate figures
+│   └── tables/             Final and intermediate tables
 ├── quarto-files/           Source .qmd files (not rendered)
 ├── r-scripts/              Shared .R code (packages, paths, functions)
-│   ├── qmd-rendering.R     Renders .qmd files to commonmark
+│   ├── qmd-rendering.R     R script to render .qmd files to commonmark
 │   └── shared.R            Packages, paths, helper functions
 ├── rendered-files/         Rendered .qmd outputs (commonmark)
 ├── supplementary-files/    Documentation and auxiliary files
-│
-├── CLAUDE.md               Project instructions for Claude
+│   └── [other docs].md
+├── CLAUDE.md               Project instructions for AI assistants
 ├── git-commands.md         Essential git commands
-├── LICENSE
+├── LICENSE                 Project license
 ├── project.md              Detailed project and task description
 └── README.md               This file
 ```
 
 ## Data
 
-- Original zipped data is located in the respective `NABU` folder.
-- Data that is worked with is usually located on `nash`.
-- Note: the format is `.parquet` to speed up reading and writing the data.
-
-## Notes
-
-- Empty directories are tracked with `.gitkeep` placeholders.
-- Render `.qmd` files with [`r-scripts/qmd-rendering.R`](r-scripts/qmd-rendering.R); shared packages, paths, and helper functions live in [`r-scripts/shared.R`](r-scripts/shared.R).
+- Original raw data (if under restricted access) is stored on the secure project drive: `[path on institute server]`.
+- Working copies and intermediate datasets are stored at: `[path on analysis server or cluster]`.
+- All large intermediate datasets are stored in `.parquet` (or similar columnar) format for efficient reading and writing.
+- Access to data is governed by the corresponding data-use agreements and institutional rules; raw data should never be pushed to the repository.
