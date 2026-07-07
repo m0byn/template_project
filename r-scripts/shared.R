@@ -196,3 +196,21 @@ save_table = function(x, file = NULL, caption, notes = NULL, label = NULL,
   save_tt(t, output = file, overwrite = TRUE)
   invisible(file)
 }
+
+#  ---------------------------------------
+
+write_parquet_chunked = function(dt, path, k = 16L) {
+  n = nrow(dt)
+  b = floor(seq(0, n, length.out = k + 1L))
+  tbls = lapply(seq_len(k), function(i) arrow::as_arrow_table(dt[(b[i] + 1L):b[i + 1L]]))
+  arrow::write_parquet(do.call(arrow::concat_tables, tbls), path)
+}
+
+#  ---------------------------------------
+
+read_parquet_chunked = function(path) {
+  pf = arrow::ParquetFileReader$create(path)
+  rbindlist(lapply(seq_len(pf$num_row_groups) - 1L, function(g)
+    as.data.table(as.data.frame(pf$ReadRowGroup(g)))
+  ))
+}
