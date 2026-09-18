@@ -65,8 +65,9 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - computationally easy tasks: use tidyverse
 - computationally heavy tasks: use data.table
 - format: code and documentation output must ALWAYS be provided for quarto documents to copy and paste it, i.e. code provided in chunks and documentation in markdown.
-- tables shall NEVER be hardcoded
-- always use save_tables() and save_figures()
+- tables shall NEVER be hardcoded: always build them from a data object
+- in-document display tables: render the object with kable() in an `eval: true` chunk
+- tables and figures written to disk: always use save_table() and save_figure()
 - section headers: embed the step number in the header text — major steps as `Step N - Title`, sub-steps as `Step N-M - Title` (e.g. `Step 1 - Merge spells`, `Step 1-1 - Resolve duplicates`)
 - never enable Quarto's automatic section numbering — it breaks anchor links in the rendered file
 
@@ -94,4 +95,4 @@ If provided, read the project.md file. It contains:
 
 This is a must read! The information is highly important for working on this project. 
 
-Usually, the project.md file is located in the root folder here: ~/project.md
+Usually, the project.md file is located in the root folder of the repository: project.md

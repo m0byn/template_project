@@ -1,0 +1,16 @@
+# Data (lives outside the repository; see README)
+/data/*
+
+# Large or restricted input resources
+# /input/<subfolder>/
+
+# R session files
+.Rhistory
+.RData
+.Rproj.user/
+.Ruserdata
+
+# Quarto build artefacts
+.quarto/
+/quarto-files/*_files/
+/quarto-files/.gitignore

@@ -1,0 +1,141 @@
+---
+title: "NN_file-name"
+author: "Manuel Zerobin"
+format:
+    commonmark:
+      code-link: true
+      code-fold: hide
+      code-copy: true
+editor: source
+toc: true
+execute:
+  cache: false
+  eval: false
+  message: false
+---
+
+# Project
+
+- [Project name]
+
+# Task
+
+- [What this file does, and why the downstream files need it.]
+- **Path to data:** reads `XXX.parquet` from `[source]`; writes `NN_XXX.parquet` to `data/processed`.
+
+# Coding Preparation
+
+```{r prep}
+#| eval: true
+#| warning: false
+
+here::i_am("code/r-scripts/shared.R")
+
+set.seed(123456789)
+
+source(here::here('code/r-scripts/shared.R'), encoding = "UTF-8")
+
+base = read_parquet(here(path$data$processed, 'XXX.parquet'))
+
+base.txt = list(n.rows = nrow(base), n.ids = uniqueN(base$id))
+saveRDS(base.txt, here(path$data$auxNN, 'prep.rds'))
+```
+
+```{r prep-read}
+#| eval: true
+base.txt = readRDS(here(path$data$auxNN, 'prep.rds'))
+```
+
+We start from `r format(base.txt$n.rows, big.mark = ',')` rows covering
+`r format(base.txt$n.ids, big.mark = ',')` individuals.
+
+# Step 1 - [Title]
+
+```{r step-one}
+tic()
+
+step.one = base[condition == TRUE]
+
+step.one.txt = data.table(
+  n.in   = nrow(base),
+  n.out  = nrow(step.one),
+  n.drop = nrow(base) - nrow(step.one)
+)
+
+saveRDS(step.one.txt, here(path$data$auxNN, 'step-one.rds'))
+write_parquet(step.one, here(path$data$processed, 'NN_step-one.parquet'))
+
+rm(step.one)
+toc()
+```
+
+```{r step-one-read}
+#| eval: true
+step.one.txt = readRDS(here(path$data$auxNN, 'step-one.rds'))
+```
+
+**Input:** `base` — [description]
+
+**Processing steps:**
+
+1. [Transformation]
+2. [Transformation]
+
+**Output:** `step.one` — [description], written to `NN_step-one.parquet`
+
+**Findings:** the restriction drops `r format(step.one.txt$n.drop, big.mark = ',')` rows
+(`r round(step.one.txt$n.drop / step.one.txt$n.in * 100, 3)`%), leaving
+`r format(step.one.txt$n.out, big.mark = ',')`.
+
+```{r step-one-table}
+#| eval: true
+step.one.txt %>% kable(
+  col.names   = c('Rows in', 'Rows out', 'Dropped'),
+  format.args = list(big.mark = ',')
+)
+```
+
+In total we have `r format(step.one.txt$n.in, big.mark = ',')` rows of which
+`r format(step.one.txt$n.drop, big.mark = ',')` are dropped, amounting to
+`r round(step.one.txt$n.drop / step.one.txt$n.in * 100, 3)`% which leads to
+`r format(step.one.txt$n.out, big.mark = ',')` remaining.
+
+# Output
+
+```{r output}
+tic()
+
+final = read_parquet(here(path$data$processed, 'NN_step-one.parquet'))
+
+output.txt = list(
+  n.rows      = nrow(final),
+  n.ids       = uniqueN(final$id),
+  n.duplicate = sum(duplicated(final, by = c('id', 'period'))),
+  n.missing   = final[, sum(is.na(.SD)), .SDcols = names(final)]
+)
+
+saveRDS(output.txt, here(path$data$auxNN, 'output.rds'))
+write_parquet(final, here(path$data$processed, 'NN_file-name.parquet'))
+
+rm(final)
+toc()
+```
+
+```{r output-read}
+#| eval: true
+output.txt = readRDS(here(path$data$auxNN, 'output.rds'))
+```
+
+**Input:** the step outputs above
+
+**Processing steps:**
+
+1. [Consolidation]
+
+**Quality checks:**
+
+- *Integrity:* `r format(output.txt$n.duplicate, big.mark = ',')` duplicate key combinations
+- *Coverage:* `r format(output.txt$n.missing, big.mark = ',')` missing cells
+
+**Output:** `NN_file-name.parquet` — `r format(output.txt$n.rows, big.mark = ',')` rows,
+`r format(output.txt$n.ids, big.mark = ',')` individuals.

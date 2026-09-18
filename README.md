@@ -5,7 +5,7 @@
 
 ## Files
 
-All empirical work is done using Quarto. Source files are numbered and assigned to specific ranges by task. New files are created from the template at [`quarto-files/quarto-coding-file-template.md`](quarto-files/quarto-coding-file-template.md); rendered outputs are written to [`rendered-files/`](rendered-files).
+All empirical work is done using Quarto. Source files are numbered and assigned to specific ranges by task. New files are copied from [`quarto-files/quarto-coding-file-template.qmd`](quarto-files/quarto-coding-file-template.qmd); the conventions it follows are documented in [`quarto-files/quarto-coding-file-template.md`](quarto-files/quarto-coding-file-template.md). Rendered outputs are written to [`rendered-files/`](rendered-files); superseded versions live in [`quarto-files/archive/`](quarto-files/archive).
 
 **00–09:** core data preparation relevant for all subsequent tasks
 
@@ -41,17 +41,34 @@ All empirical work is done using Quarto. Source files are numbered and assigned 
 
 (Extend ranges as required; keep numbering monotone in the typical pipeline order: preparation → construction → estimation → reporting.)
 
+## Workflow
+
+- Every `.qmd` opens its `prep` chunk with `here::i_am("code/r-scripts/shared.R")` and then sources [`r-scripts/shared.R`](r-scripts/shared.R). The anchor is required: it resolves `here()` against the *project* root (the folder above `code`), which is what every `path$` entry assumes. Without it `here()` falls back to this repository's root and all paths silently resolve one level too deep.
+- [`shared.R`](r-scripts/shared.R) loads the common packages and defines `path$data$*` / `path$output$*` plus the shared helpers (`save_figure()`, `save_table()`, `%notin%`, ...). File-specific libraries are loaded in the `.qmd` itself.
+- Per-step statistics are persisted as `.rds` in `data/auxiliary/<file-number>/` and read back in an `eval: true` companion chunk, so rendering never re-runs the heavy computation (chunks are `eval: false` by default).
+- Figures are written to `output/figures` as `.png` plus a ready-to-include LaTeX snippet in `output/figures/tex`; paper tables go to `output/tables` as `.tex` (`tinytable`). In-document tables are rendered with `kable()` instead.
+- Render with [`r-scripts/qmd-rendering.R`](r-scripts/qmd-rendering.R): `render('<file-name>')` renders a single `.qmd` to commonmark in `rendered-files/`; keep the call list at the bottom of the script in pipeline order.
+
 ## Structure
 
 ```text
-project
-├── input/                  Input data and external resources
+[project]                   Project root (here() anchor)
+├── code/                   This repository
+├── data/                   Data (not in git, see below)
+└── text/                   Paper, presentations, abstract (separate repository)
+
+code
+├── input/                  Input resources (small, checked in; large vintages git-ignored)
 ├── output/                 Generated outputs
-│   ├── figures/            Final and intermediate figures
-│   └── tables/             Final and intermediate tables
+│   ├── figures/            Figures (.png) + tex/ LaTeX snippets
+│   └── tables/             Tables (.tex)
 ├── quarto-files/           Source .qmd files (not rendered)
+│   ├── archive/            Superseded versions
+│   ├── references/         .bib files
+│   ├── quarto-coding-file-template.md    Structure conventions
+│   └── quarto-coding-file-template.qmd   Skeleton to copy for a new file
 ├── r-scripts/              Shared .R code (packages, paths, functions)
-│   ├── qmd-rendering.R     R script to render .qmd files to commonmark
+│   ├── qmd-rendering.R     Renders .qmd files to commonmark
 │   └── shared.R            Packages, paths, helper functions
 ├── rendered-files/         Rendered .qmd outputs (commonmark)
 ├── supplementary-files/    Documentation and auxiliary files
@@ -64,6 +81,15 @@ project
 ```
 
 ## Data
+
+Data lives outside this repository, in `[project]/data/` (paths resolve through `path$data$*` in [`shared.R`](r-scripts/shared.R)):
+
+```text
+data
+├── raw/                    Original deliveries, read-only
+├── processed/              Analysis-ready outputs of the numbered files
+└── auxiliary/<nn>/         Per-file .rds step statistics for inline reporting
+```
 
 - Original raw data (if under restricted access) is stored on the secure project drive: `[path on institute server]`.
 - Working copies and intermediate datasets are stored at: `[path on analysis server or cluster]`.

@@ -1,7 +1,7 @@
 ###############################################################################################################################
 # Title: shared.R
 # Creator: Manuel ZEROBIN
-# Project: OeNB-PuG
+# Project: [Project Name]
 # Quarto-File: -
 # Task: shared file for all other .R scripts
 ###############################################################################################################################
@@ -18,6 +18,7 @@ library(arrow)
 library(kableExtra)
 library(data.table)
 library(tinytable)
+library(tictoc)
 if (interactive()) options(tinytable_print_output = 'markdown')
 
 
@@ -35,7 +36,11 @@ if (!any(grepl(paste(known.hosts, collapse = "|"), Sys.info()[["nodename"]]))) {
 
 # --------------------------------------- Set paths
 
-aux.folders = c("00", "10", "11", "12", "30", "31", "32", "33")
+# Requires here::i_am("code/r-scripts/shared.R") to have been called by the sourcing file, which
+# anchors here() at the project root (the folder above `code`). Without it here() falls back to the
+# repository root and every path below silently resolves one level too deep.
+
+aux.folders = c("00", "10", "20", "30")   # one folder per numbered .qmd; extend as files are added
 
 path = list(
   data = c(
@@ -49,8 +54,8 @@ path = list(
     )
   ),
   output = list(
-    plots  = here("code/output/plots"),
-    tables = here("code/output/tables")
+    figures = here("code/output/figures"),
+    tables  = here("code/output/tables")
   )
 )
 

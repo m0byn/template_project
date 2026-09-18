@@ -40,3 +40,14 @@ render = function(qmd.name) {
   cat("Successfully rendered:", qmd.name, "\n")
   return(invisible(TRUE))
 }
+
+#  ---------------------------------------Render order-------------------------------------------------------------------
+
+# Keep this list in pipeline order, so a full re-render is a single source() of this file.
+
+# render('00_...')
+# render('10_...')
+# render('20_...')
+# render('30_...')
+# render('40_...')
+# render('50_...')
